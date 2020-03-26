@@ -1,2 +1,20 @@
 # Dice-Engine
-A lightweight regex dice roller, with modifiers.
+
+Usage :
+# This simply rolls two d20 and returns the output,you can after use print to view it.
+```python
+roll(user_input="2d20") 
+```
+# Also you can export your dice rolls as a list to a json.This will create a json name rolls in the same directory
+ ```python
+roll(user_input="2d20",export_json=True) 
+```
+
+## Modifiers
+   'h' # Highest Rolls - "5d20h3" returns highest 3 rolls from the five d20
+   'l' # Lowest Rolls - "5d20l3" returns lowest 3 rolls from the five d20
+   '+'  # Adds to sum - "5d20+3" adds 3 to the sum of the five d20
+   '-'  # Subtracts from sum - "5d20-3" subtracts from the sum of the five d20
+   '.+' # Add to individual roll - "5d20.+3" adds 3 to each one of the five d20
+   '.-'  # Subtract from individual roll - "5d20.-3" subtracts 3 from each one of the five d20
+   't'  # Sum of all rolls - "5d20t" sum of the five d20
