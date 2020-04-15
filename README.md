@@ -29,7 +29,7 @@ from DiceEngine import roll
     **'.+'** # Add to individual roll - **5d20.+3** adds 3 to each one of the five d20<br/>
    **'.-'**  # Subtract from individual roll - **5d20.-3** subtracts 3 from each one of the five d20<br/>
     **'t'**  # Sum of all rolls - **5d20t** sum of the five d20<br/>
-
+    **'e'**  # "Exploding dice - **5d20e** if a d20 is rolled, it rolls again and adds to it<br/>
 ## Authors
 
 * [**NoPantsCrash**](https://github.com/NoPantsCrash) - *Initial work*

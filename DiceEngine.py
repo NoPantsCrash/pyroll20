@@ -3,13 +3,14 @@ from random import randint
 import re
 import json
 
-dice_regex = re.compile(r"^(\d*)d(\d*)([hml+-t][.+-]*)?(\d*)?$")
+dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-][.+-]*)?(\d*)?$")
 arguments = ['h',  # Highest Rolls
              'l',  # Lowest Rolls
              '+',  # Add to total
              '-',  # Remove from total
              '.+',  # Add to individual
-             '.-'  # Remove from individual
+             '.-',  # Remove from individual
+             'e',  # exploding dice
              't']  # Total
 
 
@@ -23,12 +24,14 @@ def roll(user_input: str = None, json_export: bool = False):
         modifier.append(int(result.group(4)))
     except:
         pass
+    if (int(sides) or int(repeats)) < 1:
+        return "Invalid Parameter."
     if repeats and sides:  # You can set a limit on how many sides or repeats, so to avoid hangups
         if modifier[0] is not None:  # Checking for a modifier present
             rolls = []
             for i in range(repeats):
                 rolls.append(randint(1, sides))
-            rolls = moder(rolls=rolls, modifier=modifier)
+            rolls = moder(sides=sides, rolls=rolls, modifier=modifier)
             if json_export:  # Dumps all rolls to a json
                 with open('rolls.json', 'w') as file:
                     json.dump(rolls, file, indent=2)
@@ -49,7 +52,9 @@ def roll(user_input: str = None, json_export: bool = False):
         return "Exceeds the roll limit."
 
 
-def moder(rolls: list, modifier: list):
+def moder(sides: int, rolls: list, modifier: list):
+    if modifier[0] == 'e':
+        return explode(sides=sides, rolls=rolls) # Return exploded dice rolls along with one that were neutral
     if modifier[0] == 'h':  # Return highest
         return nlargest(modifier[1], rolls)
     if modifier[0] == 'l':  # Return lowest
@@ -69,4 +74,19 @@ def moder(rolls: list, modifier: list):
     if modifier[0] == 't':  # Sum of rolls
         return sum(rolls)
 
+
+def explode(sides: int, rolls: list):
+    for i in range(0, len(rolls)):
+        counter = 0
+        loop = True
+        if rolls[i] == sides:
+            roll_temp = rolls[i]
+            while loop:
+                counter += 1
+                temp = randint(1, sides)
+                rolls[i] += temp
+                if temp != sides:
+                    rolls[i] = [rolls[i], f"Exploded {counter}"]
+                    loop = False
+    return rolls
 
