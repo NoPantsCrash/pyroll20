@@ -1,7 +1,7 @@
 
 # Dice-Engine
 
-A simple lightweight pseudorandom dice, with modifiers.Can also export rolls to a json.
+A simple Roll20 dice roller. Can also export rolls to a json.
 
 
 ### Usage Example
