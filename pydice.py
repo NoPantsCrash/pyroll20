@@ -4,6 +4,8 @@ import re
 import json
 
 dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-][.+-]*)?(\d*)?$")
+
+
 #            'h',  # Highest Roll
 #            'l',  # Lowest Roll
 #            '+',  # Add to total
@@ -14,9 +16,12 @@ dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-][.+-]*)?(\d*)?$")
 #            't',  # Total
 
 
-def roll(user_input: str = None, json_export: bool = False):
+def roll(user_input: str = None):
     result = dice_regex.search(user_input)  # Searches through the user input for the roll
-    repeats = int(result.group(1))  # assign the times to roll the die
+    try:
+        repeats = int(result.group(1))
+    except:
+        repeats = 1
     sides = int(result.group(2))  # assign the sides of the die
     modifier = []
     try:
@@ -32,29 +37,19 @@ def roll(user_input: str = None, json_export: bool = False):
             for i in range(repeats):
                 rolls.append(randint(1, sides))
             rolls = moder(sides=sides, rolls=rolls, modifier=modifier)
-            if json_export:  # Dumps all rolls to a json
-                with open('rolls.json', 'w') as file:
-                    json.dump(rolls, file, indent=2)
-                return "Exported to json."
-            else:
-                return rolls
+            return rolls
         if modifier[0] is None:
             rolls = []
             for i in range(repeats):
                 rolls.append(randint(1, sides))
-            if json_export:
-                with open('rolls.json', 'w') as file:
-                    json.dump(rolls, file, indent=2)
-                return "Exported to json."
-            else:
-                return rolls
+            return rolls
     else:
         return "Exceeds the roll limit."
 
 
 def moder(sides: int, rolls: list, modifier: list):
     if modifier[0] == 'e':
-        return explode(sides=sides, rolls=rolls) # Return exploded dice rolls along with one that were neutral
+        return explode(sides=sides, rolls=rolls)  # Return exploded dice rolls along with one that were neutral
     if modifier[0] == 'h':  # Return highest
         return nlargest(modifier[1], rolls)
     if modifier[0] == 'l':  # Return lowest
@@ -90,3 +85,5 @@ def explode(sides: int, rolls: list):
                     loop = False
     return rolls
 
+
+print(roll(user_input='d6'))
