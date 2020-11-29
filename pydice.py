@@ -4,14 +4,14 @@ import re
 import json
 
 dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-][.+-]*)?(\d*)?$")
-arguments = ['h',  # Highest Rolls
-             'l',  # Lowest Rolls
-             '+',  # Add to total
-             '-',  # Remove from total
-             '.+',  # Add to individual
-             '.-',  # Remove from individual
-             'e',  # exploding dice
-             't']  # Total
+#            'h',  # Highest Roll
+#            'l',  # Lowest Roll
+#            '+',  # Add to total
+#            '-',  # Remove from total
+#            '.+', # Add to every individual
+#            '.-', # Remove from every individual
+#            'e',  # Exploding dice
+#            't',  # Total
 
 
 def roll(user_input: str = None, json_export: bool = False):

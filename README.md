@@ -19,7 +19,7 @@ roll(user_input="2d20",export_json=True)
 
 **You can simply import the roll function in your program as such :**
 ```python
-from DiceEngine import roll
+from pydice import roll
 ```
 ### Modifiers
    **'h'** # Highest Rolls - **5d20h3** returns highest 3 rolls from the five d20<br/>
