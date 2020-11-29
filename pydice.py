@@ -85,5 +85,3 @@ def explode(sides: int, rolls: list):
                     loop = False
     return rolls
 
-
-print(roll(user_input='d6'))
