@@ -1,9 +1,6 @@
 from heapq import nlargest, nsmallest
 from random import randint
 import re
-import json
-
-dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-][.+-]*)?(\d*)?$")
 
 
 #            'h',  # Highest Roll
@@ -15,8 +12,8 @@ dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-][.+-]*)?(\d*)?$")
 #            'e',  # Exploding dice
 #            't',  # Total
 
-
 def roll(user_input: str = None):
+    dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-][.+-]*)?(\d*)?$")
     result = dice_regex.search(user_input)  # Searches through the user input for the roll
     try:
         repeats = int(result.group(1))
@@ -70,18 +67,18 @@ def moder(sides: int, rolls: list, modifier: list):
         return sum(rolls)
 
 
+# The exploding dice function
 def explode(sides: int, rolls: list):
     for i in range(0, len(rolls)):
         counter = 0
         loop = True
         if rolls[i] == sides:
-            roll_temp = rolls[i]
             while loop:
                 counter += 1
                 temp = randint(1, sides)
                 rolls[i] += temp
                 if temp != sides:
-                    rolls[i] = [rolls[i], f"Exploded {counter}"]
                     loop = False
     return rolls
+
 

@@ -1,25 +1,23 @@
 
-# Dice-Engine
+# PyRoll20
 
-A simple Roll20 dice roller. Can also export rolls to a json.
-
+A simple Roll20 dice roller. 
 
 ### Usage Example
 
- **This simply rolls two d20 and returns the output,you can after use print to view it.**
+ **This rolls two d20 and returns the output.**
 ```python
-roll(user_input="2d20") 
+import pyroll20
+pyroll20.roll(user_input="2d20") 
 ```
-**Also you can export your dice rolls as a list to a json.This will create a json named rolls in the same directory**
- ```python
-roll(user_input="2d20",export_json=True) 
+or with a modifier
+```python
+import pyroll20
+pyroll20.roll(user_input="2d20") 
 ```
-
 ### Installing
-
-**You can simply import the roll function in your program as such :**
-```python
-from pydice import roll
+```bash
+pip3 install pyroll20
 ```
 ### Modifiers
    **'h'** # Highest Rolls - **5d20h3** returns highest 3 rolls from the five d20<br/>
@@ -30,9 +28,10 @@ from pydice import roll
    **'.-'**  # Subtract from individual roll - **5d20.-3** subtracts 3 from each one of the five d20<br/>
     **'t'**  # Sum of all rolls - **5d20t** sum of the five d20<br/>
     **'e'**  # "Exploding dice - **5d20e** if a d20 is rolled, it rolls again and adds to it<br/>
-## Authors
+## Notes
+If sides are provided but no roll number, the roll number defaults to 1, for example -> **d20** is a valid input.
 
-* [**NoPantsCrash**](https://github.com/NoPantsCrash) - *Initial work*
+
 
 ## License
 This project is licensed under the GNU GENERAL PUBLIC LICENSE v3.
