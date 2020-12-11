@@ -1,5 +1,5 @@
 
-# Dice-Engine
+# PyRoll20
 
 A simple Roll20 dice roller. Can also export rolls to a json.
 
@@ -10,10 +10,7 @@ A simple Roll20 dice roller. Can also export rolls to a json.
 ```python
 roll(user_input="2d20") 
 ```
-**Also you can export your dice rolls as a list to a json.This will create a json named rolls in the same directory**
- ```python
-roll(user_input="2d20",export_json=True) 
-```
+
 
 ### Installing
 
