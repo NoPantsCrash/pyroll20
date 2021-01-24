@@ -5,31 +5,38 @@ A simple Roll20 dice roller.
 
 ### Usage Example
 
- **This rolls two d20 and returns the output.**
+ **This rolls two d20 and returns the output as a list.**
 ```python
 import pyroll20
-pyroll20.roll(user_input="2d20") 
+
+print(pyroll20.roll(user_input="2d20"))
+
+>> [12,8]
 ```
 or with a modifier
 ```python
 import pyroll20
-pyroll20.roll(user_input="2d20") 
+
+print(pyroll20.roll(user_input="2d20+5"))
+
+>> 23 
 ```
 ### Installing
 ```bash
 pip3 install pyroll20
 ```
 ### Modifiers
-   **'h'** # Highest Rolls - **5d20h3** returns highest 3 rolls from the five d20<br/>
-    **'l'** # Lowest Rolls - **5d20l3** returns lowest 3 rolls from the five d20<br/>
-    **'+'**  # Adds to sum - **5d20+3** adds 3 to the sum of the five d20<br/>
-    **'-'**  # Subtracts from sum - **5d20-3** subtracts from the sum of the five d20<br/>
-    **'.+'** # Add to individual roll - **5d20.+3** adds 3 to each one of the five d20<br/>
-   **'.-'**  # Subtract from individual roll - **5d20.-3** subtracts 3 from each one of the five d20<br/>
-    **'t'**  # Sum of all rolls - **5d20t** sum of the five d20<br/>
-    **'e'**  # "Exploding dice - **5d20e** if a d20 is rolled, it rolls again and adds to it<br/>
+   **'h'** # Highest Rolls - **5d20h3** returns the 3 highest rolls from the five d20 that were rolled.<br/>
+    **'l'** # Lowest Rolls - **5d20l3** returns the 3 lowest rolls from the five d20 that were rolled.<br/>
+    **'+'**  # Adds to sum - **5d20+3** adds 3 to the sum of the five d20 that were rolled, always returns a single integer.<br/>
+    **'-'**  # Subtracts from sum - **5d20-3** subtracts 3 from the sum of the five d20 that were rolled, always returns a single integer.<br/>
+    **'.+'** # Add to individual roll - **5d20.+3** adds 3 to each one of the five d20 that were rolled.<br/>
+   **'.-'**  # Subtract from individual roll - **5d20.-3** subtracts 3 from each one of the five d20 that were rolled.<br/>
+    **'t'**  # Sum of all rolls - **5d20t** returns the sum of the five d20 that were rolled.<br/>
+    **'e'**  # "Exploding dice - **5d20e** if any of the five rolls goes critical, it gets re-rolled and added to the individual roll. <br/>
 ## Notes
-If sides are provided but no roll number, the roll number defaults to 1, for example -> **d20** is a valid input.
+If sides are provided but no roll number, the roll number defaults to 1, for example **d20** is a valid input.
+Stacking arguments not tested.
 
 
 
