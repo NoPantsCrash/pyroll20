@@ -5,7 +5,6 @@ A simple Roll20 dice roller.
 
 ### Usage Example
 
- **This rolls two d20 and returns the output as a list.**
 ```python
 import pyroll20
 
