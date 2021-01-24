@@ -1,7 +1,7 @@
 
 # PyRoll20
 
-A simple Roll20 dice roller. 
+A Roll20 syntax compatible dice roller. 
 
 ### Usage Example
 
@@ -29,13 +29,10 @@ pip3 install pyroll20
     **'l'** # Lowest Rolls - **5d20l3** returns the 3 lowest rolls from the five d20 that were rolled.<br/>
     **'+'**  # Adds to sum - **5d20+3** adds 3 to the sum of the five d20 that were rolled, always returns a single integer.<br/>
     **'-'**  # Subtracts from sum - **5d20-3** subtracts 3 from the sum of the five d20 that were rolled, always returns a single integer.<br/>
-    **'.+'** # Add to individual roll - **5d20.+3** adds 3 to each one of the five d20 that were rolled.<br/>
-   **'.-'**  # Subtract from individual roll - **5d20.-3** subtracts 3 from each one of the five d20 that were rolled.<br/>
     **'t'**  # Sum of all rolls - **5d20t** returns the sum of the five d20 that were rolled.<br/>
     **'e'**  # "Exploding dice - **5d20e** if any of the five rolls goes critical, it gets re-rolled and added to the individual roll. <br/>
 ## Notes
 If sides are provided but no roll number, the roll number defaults to 1, for example **d20** is a valid input.
-Stacking arguments not tested.
 
 
 
