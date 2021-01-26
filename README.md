@@ -1,6 +1,6 @@
 # PyRoll20
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NoPantsCrash/pyroll20/master/readmeicon.png" width="350" title="PyRoll20">
+  <img src="https://raw.githubusercontent.com/NoPantsCrash/pyroll20/master/icon.png" width="350" title="PyRoll20">
 
 An easy to use, Roll20 syntax compatible,python dice roller. 
 </p>
