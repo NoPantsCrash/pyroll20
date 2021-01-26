@@ -1,7 +1,13 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/NoPantsCrash/pyroll20/master/readmeicon.png" width="350" title="PyRoll20">
 
-# PyRoll20
+An easy to use, Roll20 syntax compatible,python dice roller. 
+</p>
 
-A Roll20 syntax compatible dice roller. 
+### Installing
+```bash
+pip3 install pyroll20
+```
 
 ### Usage Example
 
@@ -20,10 +26,7 @@ print(pyroll20.roll(user_input="2d20+5"))
 
 >> 23 
 ```
-### Installing
-```bash
-pip3 install pyroll20
-```
+
 ### Modifiers
    **'h'** # Highest Rolls - **5d20h3** returns the 3 highest rolls from the five d20 that were rolled.<br/>
     **'l'** # Lowest Rolls - **5d20l3** returns the 3 lowest rolls from the five d20 that were rolled.<br/>
@@ -32,12 +35,16 @@ pip3 install pyroll20
     **'t'**  # Sum of all rolls - **5d20t** returns the sum of the five d20 that were rolled.<br/>
     **'e'**  # "Exploding dice - **5d20e** if any of the five rolls goes critical, it gets re-rolled and added to the individual roll. <br/>
 ## Notes
-If sides are provided but no roll number, the roll number defaults to 1, for example **d20** is a valid input.
+If sides are provided but no roll number, the roll number defaults to 1, for example **d20** is a valid input.<br/>
 
 
 
 ## License
-This project is licensed under the GNU GENERAL PUBLIC LICENSE v3.
+This project is licensed under the GNU GENERAL PUBLIC LICENSE v3.<br/>
 
+### TODO
+Fixing addition to individual rolls.<br/>
+Adding additional syntax for advantage and disadvantage and so on.<br/>
+Wrap it in some sort of gui for a standalone app.[maybe]
 
 
