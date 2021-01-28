@@ -141,6 +141,3 @@ def explode(sides: int, rolls: list):
                 if temp != sides:
                     loop = False
     return rolls
-
-
-print(roll(user_input='1d20 adv'))

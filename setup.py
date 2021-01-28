@@ -1,9 +1,10 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
 f = open("README.md", "r")
 setup(
     name='pyroll20',
-    version='0.1.3',
-    packages=[],
+    version='0.1.6',
+    packages=find_packages(),
     url='https://github.com/NoPantsCrash/pydice',
     license='GNU GENERAL PUBLIC LICENSE v3',
     author='george',
