@@ -2,15 +2,15 @@ from heapq import nlargest, nsmallest
 from random import randint
 import re
 
-dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-])?(\d*)?$")
+dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-]|\.[+-])?(\d*)?$")
 
 
 #            'h',  # Highest Roll
 #            'l',  # Lowest Roll
 #            '+',  # Add to total
 #            '-',  # Remove from total
-#            '.+', # Add to every individual TODO
-#            '.-', # Remove from every individual TODO
+#            '.+', # Add to every individual
+#            '.-', # Remove from every individual
 #            'e',  # Exploding dice
 #            't',  # Total
 
@@ -64,14 +64,14 @@ def moder(sides: int, rolls: list, modifier: str, mod_value: int):
         return sum(rolls) + mod_value
     if modifier[0] == '-':  # Subtract from sum of rolls
         return sum(rolls) - mod_value
-    # if modifier[0] == '.-':  # Subtract from each roll
-    #    for i in range(0, len(rolls)):
-    #        rolls[i] = rolls[i] - mod_value
-    #    return rolls
-    # if modifier[0] == '.+':  # Add to each roll
-    #    for i in range(0, len(rolls)):
-    #        rolls[i] = rolls[i] + mod_value
-    #    return rolls
+    if modifier[0] == '.-':  # Subtract from each roll
+        for i in range(0, len(rolls)):
+            rolls[i] = rolls[i] - mod_value
+        return rolls
+    if modifier[0] == '.+':  # Add to each roll
+        for i in range(0, len(rolls)):
+            rolls[i] = rolls[i] + mod_value
+        return rolls
     if modifier[0] == 't':  # Sum of rolls
         return sum(rolls)
 

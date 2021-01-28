@@ -29,11 +29,12 @@ print(pyroll20.roll(user_input="2d20+5"))
 
 ### Modifiers
    **'h'** # Highest Rolls - **5d20h3** returns the 3 highest rolls from the five d20 that were rolled.<br/>
-    **'l'** # Lowest Rolls - **5d20l3** returns the 3 lowest rolls from the five d20 that were rolled.<br/>
-    **'+'**  # Adds to sum - **5d20+3** adds 3 to the sum of the five d20 that were rolled, always returns a single integer.<br/>
-    **'-'**  # Subtracts from sum - **5d20-3** subtracts 3 from the sum of the five d20 that were rolled, always returns a single integer.<br/>
-    **'t'**  # Sum of all rolls - **5d20t** returns the sum of the five d20 that were rolled.<br/>
-    **'e'**  # "Exploding dice - **5d20e** if any of the five rolls goes critical, it gets re-rolled and added to the individual roll. <br/>
+   **'l'** # Lowest Rolls - **5d20l3** returns the 3 lowest rolls from the five d20 that were rolled.<br/>
+   **'+'**  # Adds to sum - **5d20+3** adds 3 to the sum of the five d20 that were rolled, always returns a single integer.<br/>**'-'**  # Subtracts from sum - **5d20-3** subtracts 3 from the sum of the five d20 that were rolled, always returns a single integer.<br/>
+   **'.-'**  # Subtracts from each individual roll - **5d20.-3** subtracts 3 from each of the five d20 that were rolled.<br/>
+   **'.+'**  # Adds to each individual roll - **5d20.+3** adds 3 to each of the five d20 that were rolled.<br/>
+   **'t'**  # Sum of all rolls - **5d20t** returns the sum of the five d20 that were rolled.<br/>
+   **'e'**  # "Exploding dice - **5d20e** if any of the five rolls goes critical, it gets re-rolled and added to the individual roll. <br/>
 ## Notes
 If sides are provided but no roll number, the roll number defaults to 1, for example **d20** is a valid input.<br/>
 
@@ -43,8 +44,7 @@ If sides are provided but no roll number, the roll number defaults to 1, for exa
 This project is licensed under the GNU GENERAL PUBLIC LICENSE v3.<br/>
 
 ### TODO
-Fixing addition to individual rolls.<br/>
-Adding additional syntax for advantage and disadvantage and so on.<br/>
-Wrap it in some sort of gui for a standalone app.[maybe]
+Adding additional syntax for advantage and disadvantage and so on.[Under Development]<br/>
+Wrap it in some sort of gui for a standalone app.[Maybe]
 
 
