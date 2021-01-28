@@ -12,25 +12,25 @@ pip3 install pyroll20
 ### Usage Example
 
 ```python
-import pyroll20
+from pyroll20.pyroll20 import roll
 
-print(pyroll20.roll(user_input="2d20"))
+print(roll(user_input="2d20"))
 
 >> [12,8]
 ```
 or with a modifier
 ```python
-import pyroll20
+from pyroll20.pyroll20 import roll
 
-print(pyroll20.roll(user_input="2d20+5"))
+print(roll(user_input="2d20+5"))
 
 >> 23 
 ```
 and with advantage
 ```python
-import pyroll20
+from pyroll20.pyroll20 import roll
 
-print(pyroll20.roll(user_input="2d20.+5 adv"))
+print(roll(user_input="2d20.+5 adv"))
 
 >> [19,21]
 
