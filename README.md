@@ -26,6 +26,15 @@ print(pyroll20.roll(user_input="2d20+5"))
 
 >> 23 
 ```
+and with advantage
+```python
+import pyroll20
+
+print(pyroll20.roll(user_input="2d20.+5 adv"))
+
+>> [19,21]
+
+```
 
 ### Modifiers
    **'h'** # Highest Rolls - **5d20h3** returns the 3 highest rolls from the five d20 that were rolled.<br/>
@@ -38,15 +47,7 @@ print(pyroll20.roll(user_input="2d20+5"))
 <br/>
 ### Advantage & Disadvantage
 
-Adding **adv** or **disadv** after the roll like so
-```python
-import pyroll20
 
-print(pyroll20.roll(user_input="2d20 adv"))
-
->> [17,16]
-
-```
 <br/>
 
    **'adv'** # This will roll the provided argument twice, then return the roll with the higher average and discard the other one.<br/>
