@@ -35,6 +35,24 @@ print(pyroll20.roll(user_input="2d20+5"))
    **'.+'**  # Adds to each individual roll - **5d20.+3** adds 3 to each of the five d20 that were rolled.<br/>
    **'t'**  # Sum of all rolls - **5d20t** returns the sum of the five d20 that were rolled.<br/>
    **'e'**  # "Exploding dice - **5d20e** if any of the five rolls goes critical, it gets re-rolled and added to the individual roll. <br/>
+<br/>
+### Advantage & Disadvantage
+
+Adding **adv** or **disadv** after the roll like so
+```python
+import pyroll20
+
+print(pyroll20.roll(user_input="2d20 adv"))
+
+>> [17,16]
+
+```
+<br/>
+
+   **'adv'** # This will roll the provided argument twice, then return the roll with the higher average and discard the other one.<br/>
+   **'disadv'** # This will roll the provided argument twice, then return the roll with the lower average and discard the other one.<br/>
+<br/>
+
 ## Notes
 If sides are provided but no roll number, the roll number defaults to 1, for example **d20** is a valid input.<br/>
 
@@ -44,7 +62,6 @@ If sides are provided but no roll number, the roll number defaults to 1, for exa
 This project is licensed under the GNU GENERAL PUBLIC LICENSE v3.<br/>
 
 ### TODO
-Adding additional syntax for advantage and disadvantage and so on.[Under Development]<br/>
 Wrap it in some sort of gui for a standalone app.[Maybe]
 
 

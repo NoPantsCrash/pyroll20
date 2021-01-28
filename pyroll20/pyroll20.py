@@ -2,8 +2,10 @@ from heapq import nlargest, nsmallest
 from random import randint
 import re
 
-dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-]|\.[+-])?(\d*)?$")
+dice_regex = re.compile(r"^(\d*)d(\d*)([hmle+t-]|\.[+-])?(\d*)?\ ?((adv)|(disadv))?$")
 
+
+# advantage disadvantage : adding adv or disadv after the dice roll will repeat the roll and take the lowest average
 
 #            'h',  # Highest Roll
 #            'l',  # Lowest Roll
@@ -36,21 +38,71 @@ def roll(user_input: str = None):
         mod_value = int(result.group(4))
     except ValueError:
         mod_value = None
+    try:
+        advdis = str(result.group(5))
+    except ValueError:
+        advdis = None
 
     if (int(sides) or int(repeats)) < 1:
         return "Invalid Parameter."
 
     if isinstance(modifier, str):  # Checking for a modifier present
-        rolls = []
-        for i in range(repeats):
-            rolls.append(randint(1, sides))
+        rolls = rl(repeats=repeats, sides=sides)
         rolls = moder(sides=sides, rolls=rolls, modifier=modifier, mod_value=mod_value)
-        return rolls
+        if advdis is None:
+            return rolls
+        else:
+            second_rolls = rl(repeats=repeats, sides=sides)
+            second_rolls = moder(sides=sides, rolls=second_rolls, modifier=modifier, mod_value=mod_value)
+            if advdis == 'adv':
+                roll_avg = [int(average(rolls)), int(average(second_rolls))]
+                max_index = roll_avg.index(max(roll_avg))
+                if max_index == 0:
+                    return rolls
+                else:
+                    return second_rolls
+
+            if advdis == 'disadv':
+                roll_avg = [int(average(rolls)), int(average(second_rolls))]
+                min_index = roll_avg.index(min(roll_avg))
+                if min_index == 0:
+                    return rolls
+                else:
+                    return second_rolls
+
     else:
-        rolls = []
-        for i in range(repeats):
-            rolls.append(randint(1, sides))
-        return rolls
+        rolls = rl(repeats=repeats, sides=sides)
+
+        if advdis is None:
+            return rolls
+        else:
+            second_rolls = rl(repeats=repeats, sides=sides)
+            if advdis == 'adv':
+                roll_avg = [int(average(rolls)), int(average(second_rolls))]
+                max_index = roll_avg.index(max(roll_avg))
+                if max_index == 0:
+                    return rolls
+                else:
+                    return second_rolls
+
+            if advdis == 'disadv':
+                roll_avg = [int(average(rolls)), int(average(second_rolls))]
+                min_index = roll_avg.index(min(roll_avg))
+                if min_index == 0:
+                    return rolls
+                else:
+                    return second_rolls
+
+
+def average(lst):
+    return sum(lst) / len(lst)
+
+
+def rl(repeats, sides):
+    rolls = []
+    for i in range(repeats):
+        rolls.append(randint(1, sides))
+    return rolls
 
 
 def moder(sides: int, rolls: list, modifier: str, mod_value: int):
@@ -89,3 +141,6 @@ def explode(sides: int, rolls: list):
                 if temp != sides:
                     loop = False
     return rolls
+
+
+print(roll(user_input='1d20 adv'))
