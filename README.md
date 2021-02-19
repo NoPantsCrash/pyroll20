@@ -47,7 +47,6 @@ If sides are provided but no roll number, the roll number defaults to 1, for exa
 This project is licensed under the GNU GENERAL PUBLIC LICENSE v3.<br/>
 
 ### TODO
-Advantage and disadvantage[Not working]
-Wrap it in some sort of gui for a standalone app.[Maybe]
+Advantage and disadvantage
 
 
